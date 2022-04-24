@@ -50,7 +50,7 @@ class VueCommandes extends JPanel {
         });
         JButton test = new JButton("Testage");
         this.add(test);
-        test.addActionListener(e-> { modele.deplacementJoueur(modele.getJoueurs().get(0), modele.getZones(2, 2)); });
+        test.addActionListener(e-> { modele.deplacementPlayer(modele.getPlayers().get(0), modele.getZones(2, 2)); });
     }
 }
 

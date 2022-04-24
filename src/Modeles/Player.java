@@ -6,7 +6,7 @@ public class Player {
     private Island Island;
     privateZoness z;
     private ArrayList<Object> items;
-    public Joueur(Island Island,Zoness z) {
+    public Player(Island Island,Zoness z) {
         this.Island = Island;
         this.z = z;
     }
@@ -17,7 +17,7 @@ public class Player {
     }
 
     public String toString() {
-        return "--Joueur--\n" + z.toString() + "------------";
+        return "--Player--\n" + z.toString() + "------------";
     }
 
     public Island getIsland() {

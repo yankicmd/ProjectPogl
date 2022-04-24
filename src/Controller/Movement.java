@@ -4,15 +4,15 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import modele.Island;
-import modele.Joueur;
+import modele.Player;
 import modele.Zones;
 
 public class Movement implements MouseListener {
     private Island Island;
-    private Joueur j;
+    private Player j;
     private final int TAILLE;
 
-    public DeplacementJoueur(Island Island, int nbPixel) {
+    public DeplacementPlayer(Island Island, int nbPixel) {
         this.Island = Island;
         TAILLE = nbPixel;
     }
@@ -31,8 +31,8 @@ public class Movement implements MouseListener {
             System.exit(1);
         }
 
-        j = Island.getJoueurs().get(0);
-        Island.deplacementJoueur(j, z);
+        j = Island.getPlayers().get(0);
+        Island.deplacementPlayer(j, z);
     }
 
     @Override

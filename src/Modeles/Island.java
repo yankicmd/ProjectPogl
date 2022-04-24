@@ -12,7 +12,7 @@ public class Island extends Obv {
     privateZoness[][]Zonesss;
     private Random generateur;
 
-    private ArrayList<Joueur> joueurs;
+    private ArrayList<Player> Players;
 
     /** Construction : on initialise un tableau deZonesss. */
     public Island() {
@@ -27,7 +27,7 @@ public class Island extends Obv {
             }
         }
         this.generateur = new Random();
-        this.joueurs = new ArrayList<Joueur>();
+        this.Players = new ArrayList<Player>();
         init();
     }
 
@@ -37,7 +37,7 @@ public class Island extends Obv {
      */
     public void init() {
         initCellules();
-        initJoueurs();
+        initPlayers();
     }
 
     public void initCellules() {
@@ -64,9 +64,9 @@ public class Island extends Obv {
         }
     }
 
-    public void initJoueurs() {
-        Joueur p = new Joueur(this,Zonesss[1][1]);
-        joueurs.add(p);
+    public void initPlayers() {
+        Player p = new Player(this,Zonesss[1][1]);
+        Players.add(p);
     }
 
     /**
@@ -98,14 +98,14 @@ public class Island extends Obv {
         notifyObservers();
     }
 
-    public void deplacementJoueur(Joueur j,Zoness nZ) {
+    public void deplacementPlayer(Player j,Zoness nZ) {
         if (!nZ.estSubmergee() && j.getZones().estAdjacente(nZ)) {
             j.seDeplace(nZ);
             notifyObservers();
         }
     }
 
-    public void assecher(Joueur j,Zoness zV) {
+    public void assecher(Player j,Zoness zV) {
 
     }
 
@@ -122,11 +122,11 @@ public class Island extends Obv {
     }
 
     public String toString() {
-        return String.format("Infos Islands: \nHauteur: %d\nLargeur: %d%nNombre de joueurs: %d", HAUTEUR, LARGEUR,
-                this.joueurs.size());
+        return String.format("Infos Islands: \nHauteur: %d\nLargeur: %d%nNombre de Players: %d", HAUTEUR, LARGEUR,
+                this.Players.size());
     }
 
-    public ArrayList<Joueur> getJoueurs() {
-        return this.joueurs;
+    public ArrayList<Player> getPlayers() {
+        return this.Players;
     }
 }
