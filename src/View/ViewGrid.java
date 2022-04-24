@@ -6,7 +6,7 @@ import java.awt.Graphics;
 import javax.swing.JPanel;
 import autres.Obver;
 import modele.Island;
-import modele.Zoness;
+import modele.Zonesss;
 
 class ViewGrid extends JPanel implements Obver {
     /** On maintient une référence vers le modèle. */
@@ -20,7 +20,7 @@ class ViewGrid extends JPanel implements Obver {
         /** On enregistre la vue [this] en tant qu'observateur de [modele]. */
         modele.addObver(this);
         /**
-         * Définition et application d'une taille fixe pour cette Zoness de l'interface,
+         * Définition et application d'une taille fixe pour cetteZonessss de l'interface,
          * calculée en fonction du nombre de cellules et de la taille d'affichage.
          */
         Dimension dim = new Dimension(TAILLE *Island.LARGEUR, TAILLE *Island.HAUTEUR);
@@ -54,13 +54,13 @@ class ViewGrid extends JPanel implements Obver {
                  * ... Appeler une fonction d'affichage auxiliaire. On lui fournit les
                  * informations de dessin [g] et les coordonnées du coin en haut à gauche.
                  */
-                paint(g, modele.getZoness(i, j), (i - 1) * TAILLE, (j - 1) * TAILLE);
+                paint(g, modele.getZonesss(i, j), (i - 1) * TAILLE, (j - 1) * TAILLE);
             }
         }
     }
 
     /** Une fonction utIsland pour la fonction paint */
-    private Color getColorFromElement(Zoness z) {
+    private Color getColorFromElement(Zonesss z) {
         Color c = null;
         switch (z.getElement()) {
             case Air:
@@ -83,12 +83,12 @@ class ViewGrid extends JPanel implements Obver {
     }
 
     /**
-     * Fonction auxiliaire de dessin d'une cellule. Ici, la classe [Zoness] ne peut
+     * Fonction auxiliaire de dessin d'une cellule. Ici, la classe [Zonesss] ne peut
      * être désignée que par l'intermédiaire de la classe [Island] à laquelle elle est
-     * interne, d'où le type [Island.Zoness]. Ceci serait impossible si [Zoness] était
+     * interne, d'où le type [Island.Zonesss]. Ceci serait impossible si [Zonesss] était
      * déclarée privée dans [Island].
      */
-    private void paint(Graphics g, Zoness z, int x, int y) {
+    private void paint(Graphics g,Zonessss z, int x, int y) {
         Color c = getColorFromElement(z).brighter();
 
         if (z.estNormale()) {
