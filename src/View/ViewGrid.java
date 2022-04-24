@@ -1,26 +1,26 @@
-package vue;
+package View;
 
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import javax.swing.JPanel;
 import autres.Obver;
-import Modeless.Island;
-import Modeless.Zones;
+import Modelesss.Island;
+import Modelesss.Zoness;
 
 class ViewGrid extends JPanel implements Obver {
     /** On maintient une référence vers le modèle. */
-    privateIsland Modeless;
+    privateIsland Modelesss;
     /** Définition d'une taille (en pixels) pour l'affichage des cellules. */
     private final static int TAILLE = 32;
 
     /** Constructeur. */
-    public ViewGrid(Island Modeless) {
-        this.Modeless = Modeless;
-        /** On enregistre la vue [this] en tant qu'observateur de [Modeless]. */
-        Modeless.addObver(this);
+    public ViewGrid(Island Modelesss) {
+        this.Modelesss = Modelesss;
+        /** On enregistre la View [this] en tant qu'observateur de [Modelesss]. */
+        Modelesss.addObver(this);
         /**
-         * Définition et application d'une taille fixe pour cetteZones de l'interface,
+         * Définition et application d'une taille fixe pour cetteZoness de l'interface,
          * calculée en fonction du nombre de cellules et de la taille d'affichage.
          */
         Dimension dim = new Dimension(TAILLE *Island.LARGEUR, TAILLE *Island.HAUTEUR);
@@ -29,7 +29,7 @@ class ViewGrid extends JPanel implements Obver {
 
     /**
      * L'interface [Obver] demande de fournir une méthode [update], qui sera
-     * appelée lorsque la vue sera notifiée d'un changement dans le modèle. Ici on
+     * appelée lorsque la View sera notifiée d'un changement dans le modèle. Ici on
      * se content de réafficher toute la grille avec la méthode prédéfinie
      * [repaint].
      */
@@ -54,13 +54,13 @@ class ViewGrid extends JPanel implements Obver {
                  * ... Appeler une fonction d'affichage auxiliaire. On lui fournit les
                  * informations de dessin [g] et les coordonnées du coin en haut à gauche.
                  */
-                paint(g, Modeless.getZones(i, j), (i - 1) * TAILLE, (j - 1) * TAILLE);
+                paint(g, Modelesss.getZoness(i, j), (i - 1) * TAILLE, (j - 1) * TAILLE);
             }
         }
     }
 
     /** Une fonction utIsland pour la fonction paint */
-    private Color getColorFromElement(Zones z) {
+    private Color getColorFromElement(Zoness z) {
         Color c = null;
         switch (z.getElement()) {
             case Air:
@@ -83,12 +83,12 @@ class ViewGrid extends JPanel implements Obver {
     }
 
     /**
-     * Fonction auxiliaire de dessin d'une cellule. Ici, la classe [Zones] ne peut
+     * Fonction auxiliaire de dessin d'une cellule. Ici, la classe [Zoness] ne peut
      * être désignée que par l'intermédiaire de la classe [Island] à laquelle elle est
-     * interne, d'où le type [Island.Zones]. Ceci serait impossible si [Zones] était
+     * interne, d'où le type [Island.Zoness]. Ceci serait impossible si [Zoness] était
      * déclarée privée dans [Island].
      */
-    private void paint(Graphics g,Zones z, int x, int y) {
+    private void paint(Graphics g,Zoness z, int x, int y) {
         Color c = getColorFromElement(z).brighter();
 
         if (z.estNormale()) {

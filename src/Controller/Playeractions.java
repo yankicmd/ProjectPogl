@@ -1,18 +1,16 @@
 package Controller;
 
-public class Playeractions {
-    Playermovement deplPlayer;
-import Modeless.Island;
+import Modelesss.Island;
 
 
 import Controller.Playermovement;
 
-    public class ActionsPlayer{
+    public class Playeractions{
         private Playermovement deplPlayer;
         private Island Island;
-        //RecupererArtefact recupArtefact;
+        //RecupererArtifact recupArtifact;
 
-        public ActionsPlayer(Island Island) {
+        public Playeractions(Island Island) {
             this.Island = Island;
             this.deplPlayer = new Playermovement(Island);
         }

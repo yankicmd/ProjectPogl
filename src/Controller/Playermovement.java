@@ -1,60 +1,46 @@
 package Controller;
+import Modeles.Player;
+
+public class Playermovement {
+    Player j;
+    DewaterZone aZ;
+    Playermovement dJ;
 
 
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
-import Modeless.Island;
-import Modeless.Island.AccesHorsIsland;
-import Modeless.Player;
-import Modeless.Zone;
+    CollectArtifact rA;
 
-public class Playermovement  implements MouseListener {
-        private Island Island;
-        private Player j;
-        private final int TAILLE;
+    int nbActionsMax = 3;
 
-        public Playermovement(Island Island) {
-            this.Island = Island;
-            TAILLE = Island.LARGEUR*Island.HAUTEUR;
-        }
-
-        @Override
-        public void mouseClicked(MouseEvent arg0){
-            j = Island.getPlayers().get(0);
-            try {
-                int x = (arg0.getX() / 32)+1;
-                int y = (arg0.getY() / 32)+1;
-                Zone z = Island.getZone(x, y);
-                Island.Playermovement(j, z);
-            } catch (AccesHorsIsland e) {
-            }
-        }
-
-        @Override
-        public void mouseEntered(MouseEvent arg0) {
-            // TODO Auto-generated method stub
-
-        }
-
-        @Override
-        public void mouseExited(MouseEvent arg0) {
-            // TODO Auto-generated method stub
-
-        }
-
-        @Override
-        public void mousePressed(MouseEvent arg0) {
-            // TODO Auto-generated method stub
-
-        }
-
-        @Override
-        public void mouseReleased(MouseEvent arg0) {
-            // TODO Auto-generated method stub
-
-        }
-
+    public Playermovement (Player j) {
+        this.j = j;
+        aZ = new DewaterZones(j);
+        dJ = new Playermovement(j);
+        rA = new CollectArtifact(j);
     }
 
+    public Playermovement getPlayermovement() {
+        return dJ;
+    }
+
+    public DewaterZonegetaZ() {
+        return aZ;
+    }
+
+    public CollectArtifact getrA() {
+        return rA;
+    }
+
+    public boolean estLibre() {
+        int nbActionsUsed = aZ.getNbAction()+dJ.getNbAction()+rA.getNbAction();
+        //System.out.println(nbActionsUsed);
+        return nbActionsUsed < nbActionsMax;
+    }
+
+    public int getnbActionsMax() {
+        return nbActionsMax;
+    }
+    public int nbActionsUtilisees() {
+        return aZ.getNbAction()+dJ.getNbAction()+rA.getNbAction();
+    }
 }

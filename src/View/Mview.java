@@ -9,7 +9,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 
-import Modeles.Island;
+import Modeless.Island;
 
 public class Mview {
     /**
@@ -24,19 +24,19 @@ public class Mview {
     private ViewGrid grille;
     private ViewCommands commandes;
 
-    /** Construction d'une vue attachée à un modèle. 
+    /** Construction d'une View attachée à un modèle. 
      * @throws IOException */
-    public Mview(Island Modeles) throws IOException {
+    public Mview(Island Modeless) throws IOException {
         /** Définition de la fenêtre principale. */
         frame = new JFrame();
         frame.setTitle("Island Interdite");
         frame.setIconImage(ImageIO.read(new FIsland("res/Icone.png")));
         frame.setLayout(new BorderLayout());
 
-        /** Définition des deux vues et ajout à la fenêtre. */
-        grille = new ViewGrid(Modeles);
+        /** Définition des deux Views et ajout à la fenêtre. */
+        grille = new ViewGrid(Modeless);
         frame.add(grille);
-        commandes = new ViewCommands(Modeles);
+        commandes = new ViewCommands(Modeless);
         frame.add(commandes,BorderLayout.SOUTH);
         /**
          * Fin de la plomberie :

@@ -1,11 +1,11 @@
-package Modeless;
+package Modelesss;
 
 
 enum Situation {
     Normale, Inondee, Submergee
 }
 
-public class Zone {
+public class Zones {
 
     public enum Element {
         Air, Eau, Terre, Feu, Neutre
@@ -14,7 +14,7 @@ public class Zone {
     /** On conserve un pointeur vers la classe principale du modèle. */
     private Island island;
 
-    /** L'état d'une Zone est donné par un booléen. */
+    /** L'état d'une Zones est donné par un booléen. */
     protected boolean etat;
 
     /**
@@ -31,7 +31,7 @@ public class Zone {
      */
     private final int x, y;
 
-    public Zone(Island island, int x, int y) {
+    public Zones(Island island, int x, int y) {
         this.Island = island;
         this.etat = false;
         this.x = x;
@@ -50,11 +50,11 @@ public class Zone {
 
     /**
      * Le passage à la génération suivante se fait en deux étapes : - D'abord on
-     * calcule pour chaque Zone ce que sera sont état à la génération suivante
+     * calcule pour chaque Zones ce que sera sont état à la génération suivante
      * (méthode [evalue]). On stocke le résultat dans un attribut supplémentaire
      * [prochainEtat]. - Ensuite on met à jour l'ensemble des cellules (méthode
-     * [evolue]). Objectif : éviter qu'une évolution immédiate d'une Zone pollue la
-     * décision prise pour une Zone voisine.
+     * [evolue]). Objectif : éviter qu'une évolution immédiate d'une Zones pollue la
+     * décision prise pour une Zones voisine.
      */
 
     /* On peut jouer avec les indices et Enum.values() OPTION A CONSIDERE */
@@ -111,11 +111,11 @@ public class Zone {
     }
 
     public String toString() {
-        return String.format("Zone de coordonnées x = %d y = %d \nSituation: %s \nElement: %s\n", this.x, this.y,
+        return String.format("Zones de coordonnées x = %d y = %d \nSituation: %s \nElement: %s\n", this.x, this.y,
                 this.situation.name(), this.getElement().name());
     }
 
-    public boolean estAdjacente(Zone z) {
+    public boolean estAdjacente(Zones z) {
         return Math.abs(this.x - z.x) <= 1 && Math.abs(this.y - z.y) <=1;
     }
 

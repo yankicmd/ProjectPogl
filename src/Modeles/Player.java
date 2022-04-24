@@ -1,18 +1,18 @@
-package Modelesss;
+package Modelessss;
 
 import java.util.ArrayList;
 
 public class Player {
     private Island Island;
-    privateZones z;
+    privateZoness z;
     private ArrayList<Object> items;
-    public Player(Island Island,Zones z) {
+    public Player(Island Island,Zoness z) {
         this.Island = Island;
         this.z = z;
     }
 
 
-    public void seDeplace(Zones nz) {
+    public void seDeplace(Zoness nz) {
         this.z = nz;
     }
 
@@ -23,7 +23,7 @@ public class Player {
     public Island getIsland() {
         return this.Island;
     }
-    public Zones getZones() {
+    public Zoness getZoness() {
         return this.z;
     }
 }

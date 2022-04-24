@@ -1,29 +1,29 @@
 import java.util.ArrayList;
 import java.util.Random;
 
-import autres.Observable;
-import Modeless.Zones.Element;
+import autres.Obv;
+import Modelesss.Zoness.Element;
 import others.Obv;
 
 public class Island extends Obv {
     /** On fixe la taille de la grille. */
     public static final int HAUTEUR = 20, LARGEUR = 20;
-    /** On stocke un tableau deZones. */
-    privateZones[][]Zones;
+    /** On stocke un tableau deZoness. */
+    privateZoness[][]Zoness;
     private Random generateur;
 
     private ArrayList<Player> Players;
 
-    /** Construction : on initialise un tableau deZones. */
+    /** Construction : on initialise un tableau deZoness. */
     public Island() {
         /**
          * Pour éviter les problèmes aux bords, on ajoute une ligne et une colonne de
-         * chaque côté, dont lesZones n'évolueront pas.
+         * chaque côté, dont lesZoness n'évolueront pas.
          */
-       Zones = newZones[LARGEUR + 2][HAUTEUR + 2];
+       Zoness = newZoness[LARGEUR + 2][HAUTEUR + 2];
         for (int i = 0; i < LARGEUR + 2; i++) {
             for (int j = 0; j < HAUTEUR + 2; j++) {
-               Zones[i][j] = newZones(this, i, j);
+               Zoness[i][j] = newZoness(this, i, j);
             }
         }
         this.generateur = new Random();
@@ -32,7 +32,7 @@ public class Island extends Obv {
     }
 
     /**
-     * Initialisation aléatoire desZones, exceptées celle des bords qui ont été
+     * Initialisation aléatoire desZoness, exceptées celle des bords qui ont été
      * ajoutés.
      */
     public void init() {
@@ -53,10 +53,10 @@ public class Island extends Obv {
         // A optimiser
         for (int i = 1; i <= LARGEUR; i++) {
             for (int j = 1; j <= HAUTEUR; j++) {
-               Zones[i][j].setElement(Element.Neutre);
+               Zoness[i][j].setElement(Element.Neutre);
                 for (int[] c : casesSpe) {
                     if (c[0] == i && c[1] == j) {
-                       Zones[i][j].setElement(Element.values()[iElem]);
+                       Zoness[i][j].setElement(Element.values()[iElem]);
                         iElem = iElem + 1;
                     }
                 }
@@ -65,7 +65,7 @@ public class Island extends Obv {
     }
 
     public void initPlayers() {
-        Player p = new Player(this,Zones[1][1]);
+        Player p = new Player(this,Zoness[1][1]);
         Players.add(p);
     }
 
@@ -73,52 +73,52 @@ public class Island extends Obv {
      * Calcul du tour suivant
      */
     public void avance() {
-        ArrayList<Zones>ZonesNonSubmergee = new ArrayList<Zones>();
+        ArrayList<Zoness>ZonessNonSubmergee = new ArrayList<Zoness>();
 
         for (int i = 1; i <= LARGEUR; i++) {
             for (int j = 1; j <= HAUTEUR; j++) {
-               Zones zTraite =Zones[i][j];
+               Zoness zTraite =Zoness[i][j];
                 if (!zTraite.estSubmergee())
-                   ZonesNonSubmergee.add(zTraite);
+                   ZonessNonSubmergee.add(zTraite);
             }
         }
 
-        ArrayList<Zones>ZonesAModif = new ArrayList<Zones>();
+        ArrayList<Zoness>ZonessAModif = new ArrayList<Zoness>();
 
-        whIsland (ZonesAModif.size() < 3) {
-           Zones z =ZonesNonSubmergee.get(generateur.nextInt(ZonesNonSubmergee.size()));
-            if (!ZonesAModif.contains(z))
-               ZonesAModif.add(z);
+        whIsland (ZonessAModif.size() < 3) {
+           Zoness z =ZonessNonSubmergee.get(generateur.nextInt(ZonessNonSubmergee.size()));
+            if (!ZonessAModif.contains(z))
+               ZonessAModif.add(z);
         }
 
-        for (Zones z :ZonesAModif) {
-           Zones[z.getX()][z.getY()].progresse();
+        for (Zoness z :ZonessAModif) {
+           Zoness[z.getX()][z.getY()].progresse();
         }
 
-        notifyObservers();
+        notifyobver();
     }
 
-    public void Playermovement(Player j,Zones nZ) {
-        if (!nZ.estSubmergee() && j.getZones().estAdjacente(nZ)) {
+    public void Playermovement(Player j,Zoness nZ) {
+        if (!nZ.estSubmergee() && j.getZoness().estAdjacente(nZ)) {
             j.seDeplace(nZ);
-            notifyObservers();
+            notifyobver();
         }
     }
 
-    public void assecher(Player j,Zones zV) {
+    public void assecher(Player j,Zoness zV) {
 
     }
 
-    public void recupererArtefact() {
+    public void recupererArtifact() {
 
     }
 
     /**
-     * Une méthode pour renvoyer laZones aux coordonnées choisies (sera utilisée par
-     * la vue).
+     * Une méthode pour renvoyer laZoness aux coordonnées choisies (sera utilisée par
+     * la View).
      */
-    publicZones getZones(int x, int y) {
-        returnZones[x][y];
+    publicZoness getZoness(int x, int y) {
+        returnZoness[x][y];
     }
 
     public String toString() {

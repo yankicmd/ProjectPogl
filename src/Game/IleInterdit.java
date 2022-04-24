@@ -1,18 +1,25 @@
 package Game;
 
+import java.awt.EventQueue;
+import java.io.IOException;
+// JE DOIS AJOUTER CA ...
+import Modeles.DeroulementPartie;
+import Modeles.Island;
+import View.Mview;
+
 public class IslandInterdit {
     public static void main(String[] args) {
         /**
-         * Pour les besoins du jour on considère la ligne EvenQueue... comme une
+         * Pour les besoins du jour on consid�re la ligne EvenQueue... comme une
          * incantation qu'on pourra expliquer plus tard.
          */
         EventQueue.invokeLater(() -> {
-            /** Voici le contenu qui nous intéresse. */
-            Island Modeless = new Island();
-            Mview vue = new Mview(Modeless);
-            System.out.println(Modeless.toString());
+            /** Voici le contenu qui nous int�resse. */
+            Island Modeles = new Island();
+            DeroulementPartie dp = new DeroulementPartie(Modeles);
+
             try {
-                Mview vue = new Mview(Modeless);
+                Mview View = new Mview(Modeles,dp);
             } catch (IOException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
@@ -20,4 +27,3 @@ public class IslandInterdit {
         });
     }
 }
-
