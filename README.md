@@ -4,7 +4,7 @@ The subject is available [https://www.lri.fr/~blsk/POGL/IslandInterdit.pdf](here
 
 ## Overall program structure
 
-I didn't really have a problem with this part of the project. I just had to separate into several packages/classes [https://www.lri.fr/~blsk/POGL/Notes/Conway.html] (this File from Mr. Balabonski).
+I didn't really have a problem with this part of the project. I just had to separate into several packages/classes Conway file
 
 The development problems mainly came from the graphical interface, its use, etc. because it's something new for us.
 I will detail here several problems encountered during development.
