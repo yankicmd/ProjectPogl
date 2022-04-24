@@ -1,12 +1,12 @@
-package Modeles;
+package Modelesss;
 
 import java.util.ArrayList;
 
 public class Player {
     private Island Island;
-    privateZoness z;
+    privateZones z;
     private ArrayList<Object> items;
-    public Player(Island Island,Zoness z) {
+    public Player(Island Island,Zones z) {
         this.Island = Island;
         this.z = z;
     }

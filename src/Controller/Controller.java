@@ -1,32 +1,32 @@
 package Controller;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import Modeles.Island;
+import Modeless.Island;
+import Modeless.Player;
 
 public class Controller implements ActionListener {
-    /**
-     * On garde un pointeur vers le modèle, car le contrôleur doit provoquer un
-     * appel de méthode du modèle. Remarque : comme cette classe est interne, cette
-     * inscription explicite du modèle est inutIsland. On pourrait se contenter de
-     * faire directement référence au modèle enregistré pour la classe englobante
-     * [ViewCommands].
-     */
-    Island Modeles;
+    Island Modeless;
 
-    public Controller(Island Modeles) {
-        this.Modeles = Modeles;
+    public Controller(Island Modeless) {
+        this.Modeless = Modeless;
     }
 
     /**
-     * Action effectuée à réception d'un événement : appeler la méthode [avance] du
-     * modèle.
+     * Action effectue  rception d'un vnement : appeler la mthode [avance] du
+     * modle.
      */
 
     @Override
     public void actionPerformed(ActionEvent arg0) {
         // TODO Auto-generated method stub
-        Modeles.avance();
+        this.Modeless.avance();
+        System.out.println("bipboup");
+        this.Modeless.getPlayers();
+        System.out.println("Changement de tour !");
+        for(int i=0; i<this.Modeless.getPlayers().size(); i++) {
+            this.Modeless.getPlayers().get(i).resetEnergy();
+            System.out.println(this.Modeless.getPlayers().get(i).getRemainingA());
+        }
     }
 }

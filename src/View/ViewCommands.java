@@ -3,19 +3,19 @@ package View;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import modele.Island;
-import controleur.Controleur;
+import Modeless.Island;
+import Controller.Controller;
 
-class VueCommandes extends JPanel {
+class ViewCommands extends JPanel {
     /**
      * Pour que le bouton puisse transmettre ses ordres, on garde une référence au
      * modèle.
      */
-    private Island modele;
+    private Island Modeless;
 
     /** Constructeur. */
-    public VueCommandes(Island modele) {
-        this.modele = modele;
+    public ViewCommands(Island Modeless) {
+        this.Modeless = Modeless;
         /**
          * On crée un nouveau bouton, de classe [JButton], en précisant le texte qui
          * doit l'étiqueter. Puis on ajoute ce bouton au panneau [this].
@@ -46,11 +46,11 @@ class VueCommandes extends JPanel {
         JButton boutonFinDuTour = new JButton("Fin du tour");
         this.add(boutonFinDuTour);
         boutonFinDuTour.addActionListener(e -> {
-            modele.avance();
+            Modeless.avance();
         });
         JButton test = new JButton("Testage");
         this.add(test);
-        test.addActionListener(e-> { modele.deplacementPlayer(modele.getPlayers().get(0), modele.getZones(2, 2)); });
+        test.addActionListener(e-> { Modeless.Playermovement(Modeless.getPlayers().get(0), Modeless.getZones(2, 2)); });
     }
 }
 

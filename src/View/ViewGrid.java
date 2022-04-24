@@ -5,22 +5,22 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import javax.swing.JPanel;
 import autres.Obver;
-import modele.Island;
-import modele.Zonesss;
+import Modeless.Island;
+import Modeless.Zones;
 
 class ViewGrid extends JPanel implements Obver {
     /** On maintient une référence vers le modèle. */
-    privateIsland modele;
+    privateIsland Modeless;
     /** Définition d'une taille (en pixels) pour l'affichage des cellules. */
     private final static int TAILLE = 32;
 
     /** Constructeur. */
-    public ViewGrid(Island modele) {
-        this.modele = modele;
-        /** On enregistre la vue [this] en tant qu'observateur de [modele]. */
-        modele.addObver(this);
+    public ViewGrid(Island Modeless) {
+        this.Modeless = Modeless;
+        /** On enregistre la vue [this] en tant qu'observateur de [Modeless]. */
+        Modeless.addObver(this);
         /**
-         * Définition et application d'une taille fixe pour cetteZonessss de l'interface,
+         * Définition et application d'une taille fixe pour cetteZones de l'interface,
          * calculée en fonction du nombre de cellules et de la taille d'affichage.
          */
         Dimension dim = new Dimension(TAILLE *Island.LARGEUR, TAILLE *Island.HAUTEUR);
@@ -54,13 +54,13 @@ class ViewGrid extends JPanel implements Obver {
                  * ... Appeler une fonction d'affichage auxiliaire. On lui fournit les
                  * informations de dessin [g] et les coordonnées du coin en haut à gauche.
                  */
-                paint(g, modele.getZonesss(i, j), (i - 1) * TAILLE, (j - 1) * TAILLE);
+                paint(g, Modeless.getZones(i, j), (i - 1) * TAILLE, (j - 1) * TAILLE);
             }
         }
     }
 
     /** Une fonction utIsland pour la fonction paint */
-    private Color getColorFromElement(Zonesss z) {
+    private Color getColorFromElement(Zones z) {
         Color c = null;
         switch (z.getElement()) {
             case Air:
@@ -83,12 +83,12 @@ class ViewGrid extends JPanel implements Obver {
     }
 
     /**
-     * Fonction auxiliaire de dessin d'une cellule. Ici, la classe [Zonesss] ne peut
+     * Fonction auxiliaire de dessin d'une cellule. Ici, la classe [Zones] ne peut
      * être désignée que par l'intermédiaire de la classe [Island] à laquelle elle est
-     * interne, d'où le type [Island.Zonesss]. Ceci serait impossible si [Zonesss] était
+     * interne, d'où le type [Island.Zones]. Ceci serait impossible si [Zones] était
      * déclarée privée dans [Island].
      */
-    private void paint(Graphics g,Zonessss z, int x, int y) {
+    private void paint(Graphics g,Zones z, int x, int y) {
         Color c = getColorFromElement(z).brighter();
 
         if (z.estNormale()) {

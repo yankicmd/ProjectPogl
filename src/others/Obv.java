@@ -1,31 +1,31 @@
 package others;
 
-public class Obv {
-    public abstract class Obv { {
-        /**
-         *Nous avons une liste [d'observateurs] d'observateurs, initialement vide, auxquels
-         * viennent enregistrer les observateurs via la méthode [addObv].
-         */
-        private ArrayList<Obv> Obvs;
-        public Observable() {
-            this.Obvs = new ArrayList<Obv>();
-        }
-        public void addObv(Obv o) {
-            Obvs.add(o);
-        }
+import java.util.ArrayList;
 
-        /**
-         * Lorsque l'état de l'objet observé change, il est convenu d'appeler le
-         * Méthode [notifyObvs] pour notifier tous les observateurs
-         * enregistré.
-         * Nous le faisons ici concrètement en appelant la méthode [update] de chaque
-         * observateur.
-         */
-        public void notifyObvs() {
-            for(Obv o : Obvs) {
-                o.update();
-            }
-        }
+public abstract class Observable {
+    /**
+     * On a une liste [observers] d'observateurs, initialement vide,  laquelle
+     * viennent s'inscrire les observateurs via la mthode [addObserver].
+     */
+    private ArrayList<Observer> observers;
+    public Observable() {
+        this.observers = new ArrayList<Observer>();
+    }
+    public void addObserver(Observer o) {
+        observers.add(o);
     }
 
+    /**
+     * Lorsque l'tat de l'objet observ change, il est convenu d'appeler la
+     * mthode [notifyObservers] pour prvenir l'ensemble des observateurs
+     * enregistrs.
+     * On le fait ici concrtement en appelant la mthode [update] de chaque
+     * observateur.
+     */
+    public void notifyObservers() {
+        for(Observer o : observers) {
+            o.update();
+        }
+    }
 }
+

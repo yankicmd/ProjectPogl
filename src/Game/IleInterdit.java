@@ -8,11 +8,11 @@ public class IslandInterdit {
          */
         EventQueue.invokeLater(() -> {
             /** Voici le contenu qui nous intéresse. */
-            Island modele = new Island();
-            Mview vue = new Mview(modele);
-            System.out.println(modele.toString());
+            Island Modeless = new Island();
+            Mview vue = new Mview(Modeless);
+            System.out.println(Modeless.toString());
             try {
-                Mview vue = new Mview(modele);
+                Mview vue = new Mview(Modeless);
             } catch (IOException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
