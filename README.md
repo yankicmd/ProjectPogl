@@ -1,6 +1,6 @@
-# ile interdit
+# Island interdit
 
-jeu d ile interdit
+jeu d Island interdit
 
 ## Getting started
 
@@ -8,21 +8,21 @@ To make it easy for you to get started with GitLab, here's a list of recommended
 
 Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
 
-## Add your files
+## Add your fIslands
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
+- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-fIsland) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-fIsland) fIslands
+- [ ] [Add fIslands using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-fIsland.html#add-a-fIsland-using-the-command-line) or push an existing Git repository with the following command:
 
 ```
 cd existing_repo
-git remote add origin https://gitlab.dsi.universite-paris-saclay.fr/yanki.ozagac/ile-interdit.git
+git remote add origin https://gitlab.dsi.universite-paris-saclay.fr/yanki.ozagac/Island-interdit.git
 git branch -M master
 git push -uf origin master
 ```
 
 ## Integrate with your tools
 
-- [ ] [Set up project integrations](https://gitlab.dsi.universite-paris-saclay.fr/yanki.ozagac/ile-interdit/-/settings/integrations)
+- [ ] [Set up project integrations](https://gitlab.dsi.universite-paris-saclay.fr/yanki.ozagac/Island-interdit/-/settings/integrations)
 
 ## Collaborate with your team
 
@@ -46,10 +46,10 @@ Use the built-in continuous integration in GitLab.
 
 # Editing this README
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!).  Thank you to [makeareadme.com](https://www.makeareadme.com/) for this template.
+When you're ready to make this README your own, just edit this fIsland and use the handy template below (or feel free to structure it however you want - this is just a starting point!).  Thank you to [makeareadme.com](https://www.makeareadme.com/) for this template.
 
 ## Suggestions for a good README
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that whIsland a README can be too long and detaIslandd, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
 
 ## Name
 Choose a self-explaining name for your project.
@@ -67,7 +67,7 @@ Depending on what you are making, it can be a good idea to include screenshots o
 Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
 
 ## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, whIsland providing links to more sophisticated examples if they are too long to reasonably include in the README.
 
 ## Support
 Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
