@@ -1,4 +1,4 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompIsland
 
 plugins {
     kotlin("jvm") version "1.5.10"
@@ -19,6 +19,6 @@ tasks.test {
     useJUnit()
 }
 
-tasks.withType<KotlinCompile>() {
+tasks.withType<KotlinCompIsland>() {
     kotlinOptions.jvmTarget = "1.8"
 }
