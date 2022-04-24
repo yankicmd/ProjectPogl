@@ -6,7 +6,7 @@ import javax.swing.JPanel;
 import Modeles.Island;
 import Controller.Controller;
 
-    class VueCommandes extends JPanel {
+    class ViewCommands extends JPanel {
         /**
          * Pour que le bouton puisse transmettre ses ordres, on garde une
          * référence au modèle.
@@ -14,7 +14,7 @@ import Controller.Controller;
         private Island Modeles;
 
         /** Constructeur. */
-        public VueCommandes(Island Modeles) {
+        public ViewCommands(Island Modeles) {
             this.Modeles = Modeles;
             /**
              * On crée un nouveau bouton, de classe [JButton], en précisant le

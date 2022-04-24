@@ -11,7 +11,7 @@ public class Controller implements ActionListener {
      * appel de méthode du modèle. Remarque : comme cette classe est interne, cette
      * inscription explicite du modèle est inutIsland. On pourrait se contenter de
      * faire directement référence au modèle enregistré pour la classe englobante
-     * [VueCommandes].
+     * [ViewCommands].
      */
     Island Modeles;
 

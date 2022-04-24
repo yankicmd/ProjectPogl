@@ -3,26 +3,26 @@ package modele;
 import java.util.ArrayList;
 import java.util.Random;
 
-import others.Obv;
-import Modeles.Zones.Element;
+import autres.Observable;
+import modele.Zones.Element;
 
-public class Island extends Observable {
+public class Island Islandextends Observable {
     /** On fixe la taille de la grille. */
     public static final int HAUTEUR = 20, LARGEUR = 20;
-    /** On stocke un tableau de zones. */
-    private Zone[][] zones;
+    /** On stocke un tableau de Zoness. */
+    private Zones[][] Zoness;
     private Random generateur;
 
-    /** Construction : on initialise un tableau de zones. */
+    /** Construction : on initialise un tableau de Zoness. */
     public Island() {
         /**
          * Pour éviter les problèmes aux bords, on ajoute une ligne et une colonne de
-         * chaque côté, dont les zones n'évolueront pas.
+         * chaque côté, dont les Zoness n'évolueront pas.
          */
-        zones = new Zone[LARGEUR + 2][HAUTEUR + 2];
+        Zoness = new Zones[LARGEUR + 2][HAUTEUR + 2];
         for (int i = 0; i < LARGEUR + 2; i++) {
             for (int j = 0; j < HAUTEUR + 2; j++) {
-                zones[i][j] = new Zone(this, i, j);
+                Zoness[i][j] = new Zones(this, i, j);
             }
         }
         this.generateur = new Random();
@@ -30,14 +30,34 @@ public class Island extends Observable {
     }
 
     /**
-     * Initialisation aléatoire des zones, exceptées celle des bords qui ont été
+     * Initialisation aléatoire des Zoness, exceptées celle des bords qui ont été
      * ajoutés.
      */
+    /**
+     * On va rajouter la Zones d'air, d'eau, de terre et enfin feu.
+     */
+
     public void init() {
+
+        ArrayList<int[]> casesSpe = new ArrayList<int[]>();
+        whIsland(casesSpe.size() < 4) {
+            int[] c = { generateur.nextInt(LARGEUR) + 1, generateur.nextInt(HAUTEUR) + 1 };
+            if (!casesSpe.contains((int[]) c))
+                casesSpe.add(c);
+        }
+
+        int iElem = 0;
+
+        // A optimiser
         for (int i = 1; i <= LARGEUR; i++) {
             for (int j = 1; j <= HAUTEUR; j++) {
-                zones[i][j].Situation = Situation.Normale;
-                zones[i][j].setElement(Element.values()[generateur.nextInt(Element.values().length)]);
+                Zoness[i][j].setElement(Element.Neutre);
+                for (int[] c:casesSpe) {
+                    if (c[0]==i && c[1]==j){
+                        Zoness[i][j].setElement(Element.values()[iElem]);
+                        iElem = iElem+1;
+                    }
+                }
             }
         }
     }
@@ -47,65 +67,37 @@ public class Island extends Observable {
      */
     public void avance() {
         System.out.println("On avance petit à petit");
-        ArrayList<Zone> zoneNonSubmergee = new ArrayList<Zone>();
+        ArrayList<Zones> ZonesNonSubmergee = new ArrayList<Zones>();
 
         for (int i = 1; i <= LARGEUR; i++) {
             for (int j = 1; j <= HAUTEUR; j++) {
-                Zone zTraite = zones[i][j];
+                Zones zTraite = Zoness[i][j];
                 if (!zTraite.estSubmergee())
-                    zoneNonSubmergee.add(zTraite);
+                    ZonesNonSubmergee.add(zTraite);
             }
         }
 
-        ArrayList<Zone> zoneAModif = new ArrayList<Zone>();
+        ArrayList<Zones> ZonesAModif = new ArrayList<Zones>();
 
-        whIsland (zoneAModif.size() < 3) {
-            Zone z = zoneNonSubmergee.get(generateur.nextInt(zoneNonSubmergee.size()));
-            if (!zoneAModif.contains(z))
-                zoneAModif.add(z);
+        whIsland(ZonesAModif.size() < 3) {
+            Zones z = ZonesNonSubmergee.get(generateur.nextInt(ZonesNonSubmergee.size()));
+            if (!ZonesAModif.contains(z))
+                ZonesAModif.add(z);
         }
 
-        for(Zone z:zoneAModif) {
-            zones[z.getX()][z.getY()].progresse();
+        for (Zones z : ZonesAModif) {
+            Zoness[z.getX()][z.getY()].progresse();
         }
 
         notifyObservers();
     }
 
     /**
-     * Méthode auxiliaire : compte le nombre de voisines vivantes d'une zone
-     * désignée par ses coordonnées.
-     */
-    protected int compteVoisines(int x, int y) {
-        int res = 0;
-        /**
-         * Stratégie simple à écrire : on compte les zones vivantes dans le carré 3x3
-         * centré autour des coordonnées (x, y), puis on retire 1 si la zone centrale
-         * est elle-même vivante. On n'a pas besoin de traiter à part les bords du
-         * tableau de zones grâce aux lignes et colonnes supplémentaires qui ont été
-         * ajoutées de chaque côté (dont les zones sont mortes et n'évolueront pas).
-         */
-        for (int i = x - 1; i <= x + 1; i++) {
-            for (int j = y - 1; j <= y + 1; j++) {
-                if (zones[i][j].etat) {
-                    res++;
-                }
-            }
-        }
-        return (res - ((zones[x][y].etat) ? 1 : 0));
-        /**
-         * L'expression [(c)?e1:e2] prend la valeur de [e1] si [c] vaut [true] et celle
-         * de [e2] si [c] vaut [false]. Cette dernière ligne est donc équivalente à int
-         * v; if (zones[x][y].etat) { v = res - 1; } else { v = res - 0; } return v;
-         */
-    }
-
-    /**
-     * Une méthode pour renvoyer la zone aux coordonnées choisies (sera utilisée par
+     * Une méthode pour renvoyer la Zones aux coordonnées choisies (sera utilisée par
      * la vue).
      */
-    public Zone getZone(int x, int y) {
-        return zones[x][y];
+    public Zones getZones(int x, int y) {
+        return Zoness[x][y];
     }
 
     public String toString() {
