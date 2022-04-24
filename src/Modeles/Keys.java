@@ -1,38 +1,27 @@
-package Modeless;
+package Modeles;
 
-import Modeles.Zones.Element;
 import java.util.Random;
 
-public class Keys {
+public class Keys extends Objet {
 
     static Random rand = new Random();
 
-    private Element element;
-
     public Keys(Element e) {
-        this.element = null;
+        super(e);
     }
 
-    public static Keys aleaKeys() {
-        int elem = rand.nextInt(4);
-        Keys c = new Keys(null);
-        if(elem == 0) {
-            c.element = Element.Air;
-        }
-        if(elem == 1) {
-            c.element = Element.Eau;
-        }
-        if(elem == 2) {
-            c.element = Element.Terre;
-        }
-        if(elem == 3) {
-            c.element = Element.Feu;
-        }
+    public static Keys aleaKeyss() {
+        int elem = rand.nextInt(Element.values().length-1); //L'élement neutre est exclue.
+        Keys c = new Keys(Element.values()[elem]);
+
         return c;
     }
 
-    public Element getElement() {
-        return this.element;
+    public boolean cleEgales(Keys c) {
+        return this.e == c.e;
     }
 
+    public String toString() {
+        return "Cle " + e.toString();
+    }
 }

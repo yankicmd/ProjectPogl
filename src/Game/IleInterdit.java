@@ -2,12 +2,12 @@ package Game;
 
 import java.awt.EventQueue;
 import java.io.IOException;
-// JE DOIS AJOUTER CA ...
+
 import Modeles.DeroulementPartie;
 import Modeles.Island;
-import View.Mview;
+import vue.Mview;
 
-public class IslandInterdit {
+public class IleInterdit {
     public static void main(String[] args) {
         /**
          * Pour les besoins du jour on consid�re la ligne EvenQueue... comme une
@@ -19,7 +19,7 @@ public class IslandInterdit {
             DeroulementPartie dp = new DeroulementPartie(Modeles);
 
             try {
-                Mview View = new Mview(Modeles,dp);
+                Mview vue = new Mview(Modeles,dp);
             } catch (IOException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();

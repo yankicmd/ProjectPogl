@@ -1,4 +1,4 @@
-package Controller;
+package Player;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,7 +12,7 @@ import Modeles.Player;
 import Modeles.Zones;
 import Modeles.Island.AccesHorsIsland;
 
-public class DewaterZone extends Playeractions implements MouseListener {
+public class DewaterZones extends Playeraction implements MouseListener {
     int TAILLE;
     Island Island;
 
@@ -24,13 +24,13 @@ public class DewaterZone extends Playeractions implements MouseListener {
     @Override
     public void mouseClicked(MouseEvent arg0) {
         if (SwingUtilities.isRightMouseButton(arg0)) {
-            System.out.println("Arrosage");
             try {
                 int x = (arg0.getX() / 32) + 1;
                 int y = (arg0.getY() / 32) + 1;
                 Zones z = Island.getZones(x, y);
                 if (Island.DewaterZones(j, z)) {
                     this.incrNbAction();
+                    this.notifyObservers();
                 }
                 ;
             } catch (AccesHorsIsland e) {

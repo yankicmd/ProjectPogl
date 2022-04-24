@@ -1,10 +1,10 @@
 # Development Notes
 
-The subject is available [https://www.lri.fr/~blsk/POGL/IleInterdite.pdf](here).
+The subject is available [https://www.lri.fr/~blsk/POGL/IslandInterdit.pdf](here).
 
 ## Overall program structure
 
-I didn't really have a problem with this part of the project. I just had to separate into several packages/classes [https://www.lri.fr/~blsk/POGL/Notes/Conway.html] (this file from Mr. Balabonski).
+I didn't really have a problem with this part of the project. I just had to separate into several packages/classes [https://www.lri.fr/~blsk/POGL/Notes/Conway.html] (this fIsland from Mr. Balabonski).
 
 The development problems mainly came from the graphical interface, its use, etc. because it's something new for us.
 I will detail here several problems encountered during development.
@@ -25,7 +25,7 @@ In the end, our solution was to make the checks and possible deletions in the pa
 
 ## Multiplayer and movement
 
-I had a problem here which was as follows: When I wanted to move a character, I moved all the characters that could move to the selected area in accordance with the movement rules. This was due to the fact that for one turn, I loop over the Players ([https://gitlab.u-psud.fr/alexandre.pham/ile-interdite/commit/63772ab8ec0506dc5a2fdd47850491bb5764d192](see here PlayerMove class)) whereas what I want is one turn = one player.
+I had a problem here which was as follows: When I wanted to move a character, I moved all the characters that could move to the selected area in accordance with the movement rules. This was due to the fact that for one turn, I loop over the Players ([https://gitlab.u-psud.fr/alexandre.pham/Island-interdite/commit/63772ab8ec0506dc5a2fdd47850491bb5764d192](see here PlayerMove class)) whereas what I want is one turn = one player.
 
 I had detected this problem quite early because I had at this stage, initialized the players close to each other, it would have been more difficult to find this bug and to solve it if I had directly initialized the position of the players in a way random.
 

@@ -1,16 +1,18 @@
 package Controller;
 
+package controleur;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import Modeles.Island;
-import Modeles.Player;
+import Modeles.Joueur;
 
-public class Controller implements ActionListener {
+public class Controleur implements ActionListener {
     Island Modeles;
 
-    public Controller(Island Modeles) {
-        this.Modeles = Modeles;
+    public Controleur(Island modele) {
+        this.modele = modele;
     }
 
     /**
@@ -21,6 +23,6 @@ public class Controller implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent arg0) {
         // TODO Auto-generated method stub
-        this.Modeles.avance();
+        this.modele.avance();
     }
 }

@@ -1,9 +1,11 @@
 package others;
 
-public interface Obver{
+
+public interface Observer {
     /**
-     * Un observateur doit posséder une méthode [update] déclenchant la mise à
+     * Un observateur doit poss�der une m�thode [update] d�clenchant la mise �
      * jour.
      */
     public void update();
 }
+

@@ -1,46 +1,61 @@
-package Controller;
+package Player;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import javax.swing.SwingUtilities;
+import Modeles.Island;
+import Modeles.Island.AccesHorsIsland;
 import Modeles.Player;
+import Modeles.Zones;
 
-public class Playermovement {
-    Player j;
-    DewaterZone aZ;
-    Playermovement dJ;
+public class Playermovement extends Playeraction implements MouseListener {
+    int TAILLE;
+    Island Island;
 
-
-
-    CollectArtifact rA;
-
-    int nbActionsMax = 3;
-
-    public Playermovement (Player j) {
-        this.j = j;
-        aZ = new DewaterZones(j);
-        dJ = new Playermovement(j);
-        rA = new CollectArtifact(j);
+    public Playermovement(Player j) {
+        super(j);
+        this.Island = j.getIsland();
     }
 
-    public Playermovement getPlayermovement() {
-        return dJ;
+    @Override
+    public void mouseClicked(MouseEvent arg0) {
+        if (SwingUtilities.isLeftMouseButton(arg0)) {
+            try {
+                int x = (arg0.getX() / 32) + 1;
+                int y = (arg0.getY() / 32) + 1;
+                Zones z = Island.getZones(x, y);
+                if (Island.Playermovement(j, z)) {
+                    this.incrNbAction();
+                    this.notifyObservers();
+                }
+                ;
+            } catch (AccesHorsIsland e) {
+
+            }
+        }
     }
 
-    public DewaterZonegetaZ() {
-        return aZ;
+    @Override
+    public void mouseEntered(MouseEvent arg0) {
+        // TODO Auto-generated method stub
+
     }
 
-    public CollectArtifact getrA() {
-        return rA;
+    @Override
+    public void mouseExited(MouseEvent arg0) {
+        // TODO Auto-generated method stub
+
     }
 
-    public boolean estLibre() {
-        int nbActionsUsed = aZ.getNbAction()+dJ.getNbAction()+rA.getNbAction();
-        //System.out.println(nbActionsUsed);
-        return nbActionsUsed < nbActionsMax;
+    @Override
+    public void mousePressed(MouseEvent arg0) {
+        // TODO Auto-generated method stub
+
     }
 
-    public int getnbActionsMax() {
-        return nbActionsMax;
+    @Override
+    public void mouseReleased(MouseEvent arg0) {
+        // TODO Auto-generated method stub
+
     }
-    public int nbActionsUtilisees() {
-        return aZ.getNbAction()+dJ.getNbAction()+rA.getNbAction();
-    }
+
 }

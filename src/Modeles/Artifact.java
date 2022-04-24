@@ -1,15 +1,12 @@
-package Modeless;
-
 package Modeles;
 
-import Modeles.Zones.Element;
-
-public class Artifact {
-
-    private Element element;
+public class Artifact extends Objet {
 
     public Artifact(Element e) {
-        this.element = null;
+        super(e);
     }
 
+    public boolean ArtifactEgal(Artifact a) {
+        return this.e == a.e;
+    }
 }

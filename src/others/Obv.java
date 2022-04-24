@@ -2,30 +2,28 @@ package others;
 
 import java.util.ArrayList;
 
-import java.util.ArrayList;
-
-public abstract class Obv {
+public abstract class Observable {
     /**
-     * On a une liste [obver] d'observateurs, initialement vide,  laquelle
-     * viennent s'inscrire les observateurs via la mthode [addObver].
+     * On a une liste [observers] d'observateurs, initialement vide,  laquelle
+     * viennent s'inscrire les observateurs via la mthode [addObserver].
      */
-    private ArrayList<Obver> obver;
-    public Obv() {
-        this.obver = new ArrayList<Obver>();
+    private ArrayList<Observer> observers;
+    public Observable() {
+        this.observers = new ArrayList<Observer>();
     }
-    public void addObver(Obver o) {
-        obver.add(o);
+    public void addObserver(Observer o) {
+        observers.add(o);
     }
 
     /**
      * Lorsque l'tat de l'objet observ change, il est convenu d'appeler la
-     * mthode [notifyobver] pour prvenir l'ensemble des observateurs
+     * mthode [notifyObservers] pour prvenir l'ensemble des observateurs
      * enregistrs.
      * On le fait ici concrtement en appelant la mthode [update] de chaque
      * observateur.
      */
-    public void notifyobver() {
-        for(Obver o : obver) {
+    public void notifyObservers() {
+        for(Observer o : observers) {
             o.update();
         }
     }

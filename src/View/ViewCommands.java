@@ -1,56 +1,84 @@
 package View;
 
+import java.awt.event.ActionEvent;
+
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import Modelesss.Island;
-import Controller.Controller;
+import Others.Observer;
+import Modeles.DeroulementPartie;
+import Modeles.Island;
+import Modeles.Player;
+import Controller.Playeractions;
+import Controller.Controleur;
+import Controller.Playermovement;
+import Controller.EchangeKeys;
+import Controller.CollectArtifact;
 
-class ViewCommands extends JPanel {
+class ViewCommands extends JPanel implements Observer {
     /**
-     * Pour que le bouton puisse transmettre ses ordres, on garde une référence au
-     * modèle.
+     * Pour que le bouton puisse transmettre ses ordres, on garde une reference au
+     * Modeles.
      */
-    private Island Modelesss;
+    private Island Modeles;
+    private DeroulementPartie liaison;
+    private ViewGrid vg;
+    private ViewPlayer vj;
+    private CollectArtifact ra;
+    private EchangeKeys ea;
 
-    /** Constructeur. */
-    public ViewCommands(Island Modelesss) {
-        this.Modelesss = Modelesss;
-        /**
-         * On crée un nouveau bouton, de classe [JButton], en précisant le texte qui
-         * doit l'étiqueter. Puis on ajoute ce bouton au panneau [this].
-         */
-        /**
-         * Le bouton, lorsqu'il est cliqué par l'utilisateur, produit un événement, de
-         * classe [ActionEvent].
-         *
-         * On a ici une variante du schéma observateur/observé : un objet implémentant
-         * une interface [ActionListener] va s'inscrire pour "écouter" les événements
-         * produits par le bouton, et recevoir automatiquements des notifications.
-         * D'autres variantes d'auditeurs pour des événements particuliers :
-         * [MouseListener], [KeyboardListener], [WindowListener].
-         *
-         * Cet observateur va enrichir notre schéma Modèle-View d'une couche
-         * intermédiaire Contrôleur, dont l'objectif est de récupérer les événements
-         * produits par la View et de les traduire en instructions pour le modèle. Cette
-         * strate intermédiaire est potentiellement riche, et peut notamment traduire
-         * les mêmes événements de différentes façons en fonction d'un état de
-         * l'application. Ici nous avons un seul bouton réalisant une seule action,
-         * notre contrôleur sera donc particulièrement simple. Cela nécessite néanmoins
-         * la création d'une classe dédiée.
-         */
-        /**
-         * Variante : une lambda-expression qui évite de créer une classe spécifique
-         * pour un contrôleur simplissime.
-         */
+    public ViewCommands(Island Modeles, DeroulementPartie dp) {
+        this.Modeles = Modeles;
+        this.liaison = dp;
+        this.ra = new CollectArtifact(liaison.getPlayer());
+        this.ea = new EchangeKeys(liaison.getPlayer());
+        liaison.addObserver(this);
+
         JButton boutonFinDuTour = new JButton("Fin du tour");
-        this.add(boutonFinDuTour);
+
         boutonFinDuTour.addActionListener(e -> {
-            Modelesss.avance();
+            vg.removeMouseListener(liaison.getAJActuel().getPlayermovement());
+            vg.removeMouseListener(liaison.getAJActuel().getaZ());
+            liaison.prochainPlayer();
+            vg.addMouseListener(liaison.getAJActuel().getPlayermovement());
+            vg.addMouseListener(liaison.getAJActuel().getaZ());
+            Modeles.avance();
+            liaison.giveAleaClefs();
+            vj.update();
+
+            if (this.liaison.gagne()) {
+                System.out.println(" La partie est gagne !");
+            }
         });
-        JButton test = new JButton("Testage");
-        this.add(test);
-        test.addActionListener(e-> { Modelesss.Playermovement(Modelesss.getPlayers().get(0), Modelesss.getZoness(2, 2)); });
+
+        JButton recupArte = new JButton("Recuperer un artefact");
+        recupArte.addActionListener(e -> {
+            if (liaison.getAJActuel().estLibre()) {
+                ra.donnerArtefact(liaison.getPlayer());
+            }
+        });
+
+        JButton echangeArte = new JButton("Donner une cle");
+        echangeArte.addActionListener(e -> ea.echange(liaison.getPlayer(), Modeles.getPlayers()));
+
+        this.add(echangeArte);
+        this.add(recupArte);
+        this.add(boutonFinDuTour);
+    }
+
+    // CONTROLEUR --> Island --> Player
+
+    public void setGrille(ViewGrid vg) {
+        this.vg = vg;
+    }
+
+    public void setViewPlayer(ViewPlayer vj) {
+        this.vj = vj;
+    }
+
+    @Override
+    public void update() {
+        // TODO Auto-generated method stub
+
     }
 }
-
